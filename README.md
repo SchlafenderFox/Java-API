@@ -1,7 +1,7 @@
 # API
 
 ### Installation
-  - Install git bash.
+  - Install `git bash`.
   - Install `docker` and `docker-compose`.
   - Clone repository:
     - ```git clone https://github.com/SchlafenderFox/Java-API.git```
