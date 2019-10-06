@@ -79,7 +79,6 @@ class GetNews(RequestHandler):
             self.write(json.dumps(response_dict, ensure_ascii=False))
             await self.finish()
 
-            #TODO: Добавити адекватну ассинхронщину
 
 def make_app():
     app = Application([
