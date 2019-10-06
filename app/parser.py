@@ -1,3 +1,4 @@
+import logging
 import asyncio
 
 from app.client import Client
@@ -21,6 +22,7 @@ class Parser:
     async def __get_news_from_page(url: str) -> list:
         html = await Client.get_html(url=url)
 
+        logging.info("Getting news from:" + url)
         if Tester.test_news_in_page(html):
             page_news = Serializer.serialize_news(html)
             return page_news

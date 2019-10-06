@@ -56,8 +56,10 @@ class GetNews(RequestHandler):
             await self.finish()
 
         else:
+            logging.info("Input parameters:" + str(params))
             days = DateManage.generate_day_list(DateManage.convert_from_str(params['date'].split('-')[0]),
                                                 DateManage.convert_from_str(params['date'].split('-')[-1]))
+            logging.debug('Days list:' + str(days))
 
             helper = Helper()
             data = \
