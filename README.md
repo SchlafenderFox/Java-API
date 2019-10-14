@@ -1,7 +1,7 @@
 # API
 
 ### Installation
-  - Install git bash.
+  - Install `git bash`.
   - Install `docker` and `docker-compose`.
   - Clone repository:
     - ```git clone https://github.com/SchlafenderFox/Java-API.git```
@@ -35,7 +35,16 @@
    "Фоторепортаж",
    "Шоу-бізнес"
    ``` 
- 
+
+### Language:
+ - Allow language:
+ - ```
+   "ua",
+   "ru",
+   "en"
+   ``` 
+
+
 ### Main endpoints:
    
   - `/api/get-news/`:
@@ -57,6 +66,12 @@
         - required: `False`
         - defaults: `today`
         - example: `dd.mm.yyyy`, `dd.mm.yyyy-dd.mm.yyyy`, `01.01.2019-01.12.2019`
+      - `language`:
+        - type: `string`
+        - required: `False`
+        - defaults: `ua`
+        - example: `en`
+      
       - response format:
         ```json
           {

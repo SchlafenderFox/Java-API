@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime, timedelta
 
 from bs4 import BeautifulSoup
@@ -104,6 +105,7 @@ class DateManage(metaclass=Singleton):
 
     @staticmethod
     def generate_day_list(start_date: datetime, end_date: datetime) -> list:
+        logging.debug(f'Generate day list: {start_date}, {end_date}')
         day_list = []
         date = start_date
 
@@ -140,7 +142,14 @@ class Tester(metaclass=Singleton):
                 datetime.strptime(time, form)
             except ValueError:
                 return False
-        return True
+
+        start_time = DateManage.convert_from_str(times[0], "%H:%M")
+        end_time = DateManage.convert_from_str(times[-1], "%H:%M")
+
+        if start_time > end_time:
+            return False
+        else:
+            return True
 
     @staticmethod
     def test_language(language: str) -> bool:
@@ -194,3 +203,5 @@ class Tester(metaclass=Singleton):
             return False
         else:
             return True
+
+
