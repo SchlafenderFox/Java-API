@@ -15,8 +15,9 @@ class API(RequestHandler):
 
 
 class GetNews(RequestHandler):
-    async def post(self):
+    async def get(self):
         params = {k: self.get_argument(k) for k in self.request.arguments}
+        logging.info("Input parameters:" + str(params))
         params = Helper.rewrite_json(params)
 
         response_dict = \
@@ -26,7 +27,7 @@ class GetNews(RequestHandler):
                 'error': ''
             }
 
-        logging.info("Input parameters:" + str(params))
+        logging.info("Rewrite parameters:" + str(params))
         if not Tester.test_category(params['category']):
             response_dict['status'] = 'error'
             response_dict['error'] = 'Wrong category'
@@ -77,7 +78,6 @@ class GetNews(RequestHandler):
             self.write(json.dumps(response_dict, ensure_ascii=False))
             await self.finish()
 
-            #TODO: Добавити адекватну ассинхронщину
 
 def make_app():
     app = Application([

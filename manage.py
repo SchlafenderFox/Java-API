@@ -5,7 +5,9 @@ if __name__ == '__main__':
 
     if cmd == 'run':
         from app.server import run
+
         run()
     elif cmd == 'test':
         from tests.main import run
+
         run()
